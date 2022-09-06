@@ -1,0 +1,13 @@
+--liquibase formatted sql
+
+--changeset samirahamadjibo:initD
+CREATE SCHEMA IF NOT EXISTS STRTDC;
+
+--changeset samirahamadjibo:createWordT
+CREATE TABLE IF NOT EXISTS STRTDC.WORD(
+    ID BIGINT PRIMARY KEY NOT NULL,
+    NAME VARCHAR(64),
+    DEFINITION VARCHAR(512)
+);
+
+CREATE SEQUENCE IF NOT EXISTS STRTDC.WORD_SEQ;

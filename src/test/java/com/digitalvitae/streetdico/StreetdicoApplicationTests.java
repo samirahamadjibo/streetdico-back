@@ -1,0 +1,7 @@
+package com.digitalvitae.streetdico;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class StreetdicoApplicationTests {}
