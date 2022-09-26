@@ -3,12 +3,14 @@ package com.digitalvitae.streetdico.services;
 import com.digitalvitae.streetdico.mappers.WordMapper;
 import com.digitalvitae.streetdico.entities.Word;
 import com.digitalvitae.streetdico.repositories.WordRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class WordService {
     @Autowired
     WordRepository wordRepository;

@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @Controller
 @RequestMapping("api/v1/words")
+@CrossOrigin(origins = "*")
 public class WordController {
     @Autowired
     WordService wordService;
