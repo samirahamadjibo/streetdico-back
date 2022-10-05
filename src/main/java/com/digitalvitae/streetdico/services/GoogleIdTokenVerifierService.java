@@ -1,4 +1,5 @@
 package com.digitalvitae.streetdico.services;
+import com.digitalvitae.streetdico.entities.User;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
@@ -14,7 +15,9 @@ import java.util.Collections;
 
 @Service
 public class GoogleIdTokenVerifierService {
-    public String verifyIdToken(String idTokenString) {
+    public User verifyIdToken(String idTokenString) {
+        // trim given credential
+        idTokenString = idTokenString.substring(11, idTokenString.length()-30);
 
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new GsonFactory())
                 // Specify the CLIENT_ID of the app that accesses the backend:
@@ -22,7 +25,7 @@ public class GoogleIdTokenVerifierService {
                 .build();
 
 
-        GoogleIdToken idToken = null;
+        GoogleIdToken idToken;
         try {
             idToken = verifier.verify(idTokenString);
         } catch (GeneralSecurityException e) {
@@ -41,16 +44,17 @@ public class GoogleIdTokenVerifierService {
 
             // Get profile information from payload
             String email = payload.getEmail();
-            boolean emailVerified = Boolean.valueOf(payload.getEmailVerified());
+            boolean isEmailVerified = Boolean.valueOf(payload.getEmailVerified());
             String name = (String) payload.get("name");
             String pictureUrl = (String) payload.get("picture");
             String locale = (String) payload.get("locale");
             String familyName = (String) payload.get("family_name");
             String givenName = (String) payload.get("given_name");
 
-            return email;
+            User user = User.builder().email(email).isEmailVerified(isEmailVerified).name(name).pictureUrl(pictureUrl).locale(locale).familyName(familyName).givenName(givenName).build();
+            return user ;
         } else {
-           return("Invalid ID token.");
+           return new User();
         }
     }
 }
