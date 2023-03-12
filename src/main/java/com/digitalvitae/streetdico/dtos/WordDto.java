@@ -11,6 +11,4 @@ public class WordDto {
     private Long id;
     private String name;
     private String definition;
-
-
 }

@@ -1,11 +1,7 @@
 package com.digitalvitae.streetdico.entities;
-
 import lombok.*;
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.SEQUENCE;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
