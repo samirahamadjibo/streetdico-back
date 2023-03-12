@@ -1,9 +1,8 @@
 stages:
-  - build
   - test
+  - build
 
 test_job:
   stage: test
   script:
-    - pwd
     - mvn test
