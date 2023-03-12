@@ -23,7 +23,14 @@ public class WordController {
     public ResponseEntity<List<Word>> getWords(){
         return ResponseEntity.ok(this.wordService.getAllWords());
     }
-
+    @GetMapping(path = "/trending")
+    public ResponseEntity<List<Word>> getTrendingWords(){
+        return ResponseEntity.ok(this.wordService.getTrendingWords());
+    }
+    @DeleteMapping(path = "/word/{id}")
+    public ResponseEntity<Long> deleteWord(@PathVariable("id") Long id){
+        return ResponseEntity.ok(this.wordService.deleteWord(id));
+    }
     @PostMapping(path = "/word", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Word> saveWord(@RequestBody Word word){
         return ResponseEntity.ok(this.wordService.saveWord(word));
