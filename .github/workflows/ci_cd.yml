@@ -1,5 +1,5 @@
 name: STEETDICO BACK DEV
-run-name: Deploy to streetdico back dev by @${{ github.actor }}
+run-name: Deploy to streetdico dev by @${{ github.actor }}
 
 on:
   push:
