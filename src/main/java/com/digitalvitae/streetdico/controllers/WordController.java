@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,12 @@ public class WordController {
 
     @GetMapping
     public ResponseEntity<List<Word>> getWords(){
-        return ResponseEntity.ok(this.wordService.getAllWords());
+        List<Word> words = new ArrayList<>();
+        words.add(new Word(1L, "Meuf", "Femme"));
+        words.add(new Word(1L, "Gechar", "Chargée"));
+        words.add(new Word(1L, "Mec", "Homme"));
+
+        return ResponseEntity.ok(words);
     }
     @GetMapping(path = "/trending")
     public ResponseEntity<List<Word>> getTrendingWords(){
