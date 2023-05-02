@@ -33,7 +33,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
           name: streetdico-back-dev
-          path: ./dist
+          path: ./target
       
 # Deploy on dev
   deployment:
@@ -46,13 +46,13 @@ jobs:
         uses: actions/download-artifact@v2.1.1
         with:
             name: streetdico-back-dev
-            path: ./dist
+            path: ./target
                     
       - name: Copy run executable
         run: scp -i "${{ secrets.AWS_ACCESS_KEY_ID }}" .github/workflows/run_jar.sh ec2-user@:${{ secrets.AWS_ACCESS_KEY_ID }}/home/ec2-user
 
       - name: Copy artefact 
-        run: scp -i "${{ secrets.AWS_ACCESS_KEY_ID }}" ./dist/target/${{ secrets.AWS_ACCESS_KEY_ID }} ec2-user@:${{ secrets.AWS_ACCESS_KEY_ID }}/home/ec2-user
+        run: scp -i "${{ secrets.AWS_ACCESS_KEY_ID }}" ./target/${{ secrets.AWS_ACCESS_KEY_ID }} ec2-user@:${{ secrets.AWS_ACCESS_KEY_ID }}/home/ec2-user
 
       - name: Connect to ec2 and run jar
         run: ssh -i "${{ secrets.AWS_ACCESS_KEY_ID }}" ec2-user@${{ secrets.AWS_ACCESS_KEY_ID }} .github/workflows/run_jar.sh
