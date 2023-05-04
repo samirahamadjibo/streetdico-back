@@ -30,7 +30,7 @@ jobs:
       run: mvn -B package --file pom.xml
          
     - name: Upload artefact
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
           name: streetdico-back-dev
           path: ./target
