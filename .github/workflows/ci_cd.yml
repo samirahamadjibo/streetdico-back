@@ -52,7 +52,7 @@ jobs:
         run: scp -i "${{ secrets.KEY_PAIR_SECRET }}" .github/workflows/run_jar.sh ec2-user@:${{ env.INSTANCE_DNS }}/home/ec2-user
 
       - name: Copy artefact 
-        run: scp -i "${{ secrets.KEY_PAIR_SECRET  }}" ./target/${{ environment.TARGET_NAME}} ec2-user@:${{ env.INSTANCE_DNS  }}/home/ec2-user
+        run: scp -i "${{ secrets.KEY_PAIR_SECRET  }}" ./target/${{ env.TARGET_NAME}} ec2-user@:${{ env.INSTANCE_DNS  }}/home/ec2-user
 
       - name: Connect to ec2 and run jar
         run: ssh -i "${{ secrets.KEY_PAIR_SECRET  }}" ec2-user@${{ env.INSTANCE_DNS }} .github/workflows/run_jar.sh
