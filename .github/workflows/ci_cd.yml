@@ -32,8 +32,8 @@ jobs:
       - name: Upload artefact
         uses: actions/upload-artifact@v3
         with:
-            name: streetdico-back-dev
-            path: ./target
+          name: streetdico-back-dev
+          path: ./target
       
 # Deploy on dev
   deployment:
