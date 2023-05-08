@@ -49,13 +49,13 @@ jobs:
             path: ./target
                     
       - name: Copy run executable
-        run: scp "${{ secrets.KEY_PAIR_SECRET }}" ./run_jar.sh ec2-user@:"${{ env.INSTANCE_DNS }}"/home/ec2-user
+        run: scp ${{ secrets.KEY_PAIR_SECRET }} ./run_jar.sh ec2-user@:${{ env.INSTANCE_DNS }}/home/ec2-user
 
       - name: Copy artefact 
-        run: scp "${{ secrets.KEY_PAIR_SECRET  }}" ./target/"${{ env.TARGET_NAME}}" ec2-user@:"${{ env.INSTANCE_DNS }}"/home/ec2-user
+        run: scp ${{ secrets.KEY_PAIR_SECRET  }} ./target/${{ env.TARGET_NAME}} ec2-user@:${{ env.INSTANCE_DNS }}/home/ec2-user
 
       - name: Connect to ec2 and run jar
-        run: ssh "${{ secrets.KEY_PAIR_SECRET  }}" ec2-user@"${{ env.INSTANCE_DNS }}" ./run_jar.sh
+        run: ssh ${{ secrets.KEY_PAIR_SECRET  }} ec2-user@${{ env.INSTANCE_DNS }} ./run_jar.sh
 
  
         
