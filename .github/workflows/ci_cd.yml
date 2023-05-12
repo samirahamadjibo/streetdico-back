@@ -50,9 +50,10 @@ jobs:
       
       - name: Connect to EC2
         run: |
-          echo "secrets.KEY_PAIR_SECRET" > private_key && chmod 600 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key ec2-user@${{ env.INSTANCE_DNS }}
+          echo "$secrets.KEY_PAIR_SECRET" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ec2-user@${{ env.INSTANCE_DNS }} '
           
         
-      
+          
+    
 
