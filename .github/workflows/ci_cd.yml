@@ -52,9 +52,9 @@ jobs:
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY_PAIR_SECRET}}
-          REMOTE_HOST: ${{ env.INSTANCE_DNS }}
-          REMOTE_USER: ec2-user
-          TARGET: /home/ec2-user
+          REMOTE_HOST: ${{ env.REMOTE_HOST}}
+          REMOTE_USER: ${{ env.REMOTE_USER}}
+          TARGET: ${{ env.TARGET}}
           
     
 
