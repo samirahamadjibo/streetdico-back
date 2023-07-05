@@ -14,7 +14,7 @@ spring:
   liquibase:
     changeLog: classpath:db/changelog/changelog-master.yml
 
-
+  #security: enabled=false
 
 
 
